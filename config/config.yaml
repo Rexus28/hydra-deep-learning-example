@@ -1,0 +1,8 @@
+defaults:
+    - _self_
+    - datamodule: mnist
+    - model: mnist
+    - trainer: default
+
+    - experiment: null
+    - hparams_search: null
