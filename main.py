@@ -7,8 +7,7 @@ from pytorch_lightning import LightningDataModule, LightningModule, Trainer
 hydra_log = logging.getLogger(__name__)
 
 
-@hydra.main(version_base=None, config_path="../config",
-            config_name="config.yaml")
+@hydra.main(version_base=None, config_path="config", config_name="config.yaml")
 def main(cfg: DictConfig) -> None:
     """main function for running the deep learning models via the hydra configs
 

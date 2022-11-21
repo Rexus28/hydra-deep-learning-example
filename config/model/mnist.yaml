@@ -10,4 +10,5 @@ optimizer:
   lr: 0.001
   weight_decay: 0.0
 
-loss_function: F.cross_entropy
+loss_function:
+  _target_: torch.nn.CrossEntropyLoss
