@@ -11,7 +11,7 @@ class LitClassifier(pl.LightningModule):
                  loss_function: torch.nn.functional = F.cross_entropy,
                  ) -> None:
         super().__init__()
-        self.save_hyperparameters()
+        self.save_hyperparameters(ignore=["net", "loss_function"])
         self.net = net
         self.loss_function = loss_function
 

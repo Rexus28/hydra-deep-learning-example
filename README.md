@@ -32,5 +32,7 @@ This project was heavily influenced by these project templates:
     - [x] use the hydra instantiation
 - [ ] ~~create a conda environment~~
 - [x] create a train (and eval?) script for actually running things
-- [ ] ~~test locally~~, then run hparam search with GPU on google colab
+- [x] ~~test locally~~, then run hparam search with GPU on google colab
+- [ ] update logging so that lightning logging is adding to the same directory
+  as hydra
 
