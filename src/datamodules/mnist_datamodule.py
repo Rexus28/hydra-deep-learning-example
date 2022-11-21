@@ -71,15 +71,19 @@ class MNISTDataModule(LightningDataModule):
         MNIST(self.hparams.data_dir, train=False, download=True)
 
     def setup(self, stage: Optional[str] = None):
-        """Load data. Set variables: `self.data_train`, `self.data_val`, `self.data_test`.
+        """Load data. Set variables: `self.data_train`, `self.data_val`,
+        `self.data_test`.
 
-        This method is called by lightning with both `trainer.fit()` and `trainer.test()`, so be
+        This method is called by lightning with both `trainer.fit()` and
+        `trainer.test()`, so be
         careful not to execute things like random split twice!
         """
         # load and split datasets only if not loaded already
         if not self.data_train and not self.data_val and not self.data_test:
-            trainset = MNIST(self.hparams.data_dir, train=True, transform=self.transforms)
-            testset = MNIST(self.hparams.data_dir, train=False, transform=self.transforms)
+            trainset = MNIST(self.hparams.data_dir, train=True,
+                             transform=self.transforms)
+            testset = MNIST(self.hparams.data_dir, train=False,
+                            transform=self.transforms)
             dataset = ConcatDataset(datasets=[trainset, testset])
             self.data_train, self.data_val, self.data_test = random_split(
                 dataset=dataset,
@@ -127,12 +131,15 @@ class MNISTDataModule(LightningDataModule):
         pass
 
 
+"""
 if __name__ == "__main__":
     import hydra
     import omegaconf
     import pyrootutils
 
     root = pyrootutils.setup_root(__file__, pythonpath=True)
-    cfg = omegaconf.OmegaConf.load(root / "configs" / "datamodule" / "mnist.yaml")
+    cfg = omegaconf.OmegaConf.load(root / "configs" / "datamodule" /
+    "mnist.yaml")
     cfg.data_dir = str(root / "data")
     _ = hydra.utils.instantiate(cfg)
+"""

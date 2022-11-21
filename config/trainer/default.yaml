@@ -1,3 +1,4 @@
+_target_: pl.Trainer
 min_epochs: 1
 max_epochs: 10
 accelerator: cpu

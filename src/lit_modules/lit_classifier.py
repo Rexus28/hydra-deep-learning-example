@@ -1,17 +1,13 @@
 import torch
 import pytorch_lightning as pl
 from torch.nn import functional as F
-from torch.utils.data import DataLoader, random_split
-
-from torchvision.datasets.mnist import MNIST
-from torchvision import transforms
+from typing import Any
 
 
 class LitClassifier(pl.LightningModule):
     def __init__(self,
                  net: torch.nn.Module,
                  optimizer: torch.optim.Optimizer = torch.optim.Adam,
-                 learning_rate: float = 1e-3,
                  loss_function: torch.nn.functional = F.cross_entropy,
                  ) -> None:
         super().__init__()
@@ -46,5 +42,4 @@ class LitClassifier(pl.LightningModule):
 
     def configure_optimizers(self) -> torch.optim.Optimizer:
         # self.hparams available because we called self.save_hyperparameters()
-        return self.hparams.optimizer(self.parameters(),
-                                      lr=self.hparams.learning_rate)
+        return self.hparams.optimizer(params=self.parameters())

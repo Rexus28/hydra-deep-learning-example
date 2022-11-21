@@ -1,0 +1,9 @@
+# @package _global_
+defaults:
+    - override /hydra: default
+
+hydra:
+    sweeper:
+        params:
+            model.optimizer.lr: choice(0.0001, 0.001, 0.01, 0.1)
+            datamodule.batch_size: choice(32, 64, 128, 256)

@@ -3,6 +3,9 @@ defaults:
     - datamodule: mnist
     - model: mnist
     - trainer: default
-
+    - paths: default
+    - hydra: default
     - experiment: null
     - hparams_search: null
+
+task_name: train
